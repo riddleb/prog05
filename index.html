@@ -44,7 +44,7 @@
 		<p>Loop through the HTML form lines and store the data into an array of objects, where each property of an object contains the data in the input field of the HTML entry form. </p>
 		
 		<button type="button" onclick="
-			tbl = new Table(thArr, PersonArr, "d3");
+			tbl = new Table(headerArr, PersonArr, "d3");
 			tbl.makeTable(); tbl.addData">Generate and Display Table</button>
 		<br />
 		<br />
@@ -56,7 +56,7 @@
 		
 		<script>
 
-		global var thArr = ["Local Name", "Local D.O.B.","Local Age", "Local Zodiac"];	
+		global var headerArr = ["Local Name", "Local D.O.B.","Local Age", "Local Zodiac"];	
 		global var personArr = [];
 		var arrCounter = 0;
 			
