@@ -10,18 +10,19 @@
 				  Sbd: <input id = "sbd" type = "number" name = "Solar Birth Day" label="Solar Birth Day">
 				  Sbm: <input id = "sbm" type = "number" name = "Solar Birth Month" label="Solar Birth Month">
 				  Sby: <input id = "sby" type = "number" name = "Solar Birth Year" label ="Solar Birth Year">
+				  <select id = "country" name="Country" label="Country" form="form1">
+			          <option value="China">China</option>
+			          <option value="USA">Usa</option>
+			          </select>
 				  <button type="button" onclick="[document.getElementById('surname').value] = new Person(document.getElementById('givenname').value,
 							       document.getElementById('surname').value, document.getElementById('sbm').value,
 							       document.getElementById('sbm').value, document.getElementById('sby').value,
 							       document.getElementById('country').value);" onclick = "addLine()" ;value="Submit"> Add Person </button>
 			</form>
 
-			<select id = "country" name="Country" label="Country" form="form1">
-			  <option value="China">China</option>
-			  <option value="USA">Usa</option>
-			</select>
+			
 		</div>
-		//<button type="button" onclick="addLine();">Add Line</button>
+		
 		<br />
 		<br />
 		
