@@ -17,7 +17,7 @@
 				  <button type="button" onclick="[document.getElementById('surname').value] = new Person(document.getElementById('givenname').value,
 							       document.getElementById('surname').value, document.getElementById('sbm').value,
 							       document.getElementById('sbm').value, document.getElementById('sby').value,
-							       document.getElementById('country').value);" onclick = "addLine();" value="Submit"> Add Person </button>
+							       document.getElementById('country').value);"  value="Submit"> Add Person </button>
 			</form>
 
 			
@@ -29,7 +29,7 @@
 		
 		
 		
-		<h1>Display table</h1>
+		<h1>Display Array</h1>
 		
 		<p>Loop through the HTML form lines and store the data into an array of objects, where each property of an object contains the data in the input field of the HTML entry form. </p>
 		
@@ -58,64 +58,7 @@
 		/* addField()
 		 * inserts one label one input element into a row of a form 
 		 */
-			function addLine () {
-				// precondition: inputWidth global variable must be set
-				// precondition: call from addForm() so HTML element with id="fieldset1" exists
-				addField("fieldset1", "givenName", "Given", "text", "Jane",inputWidth);
-				addField("fieldset1", "surname", "Surname", "text", "Doe", inputWidth);
-				addField("fieldset1", "sbd", "Day", "number", "1", inputWidth);
-				addField("fieldset1", "sbm", "Month", "number", "1", inputWidth);
-				addField("fieldset1", "sby", "Year", "number", "1990", inputWidth);
-				addField("fieldset1", "country", "Country", "text", "USA", inputWidth);
-				var newelement = document.createElement("br");
-				var fieldset1 = document.getElementById("fieldset1");
-				fieldset1.appendChild(newelement);
-				currentLine++;
-}
-		function addField(formId, namePrefix, labelText, dataType, placeholder, fieldSize) {
-			// precondition: currentLine (global variable) must be set
-			// precondition: objArray[] (global variable) must be declared
-			// precondition: call from addLine() so HTML element with id=formID exists
-			// create a new label element, and append to form (or fieldset)
-			var n = document.createElement("label");
-			n.setAttribute("for",namePrefix+currentLine);
-			var t = document.createTextNode(labelText + " " );
-			n.appendChild(t);
-			var f = document.getElementById(formId);
-			f.appendChild(n);
-			if (namePrefix == "country"){
-				var n = document.createElement("select");
-				n.setAttribute("name",namePrefix+currentLine);
-				n.setAttribute("id",namePrefix+currentLine);
-				var f = document.getElementById(formId);
-				f.appendChild(n);
-
-				var newoption = document.createElement("option");
-				newoption.setAttribute("value","USA");
-				var textnode = document.createTextNode("USA");
-				newoption.appendChild(textnode);
-				var s = document.getElementById(namePrefix + currentLine);
-				s.appendChild(newoption);
-
-				var newoption = document.createElement("option");
-				newoption.setAttribute("value","China");
-				var textnode = document.createTextNode("China");
-				newoption.appendChild(textnode);
-				var s = document.getElementById(namePrefix + currentLine);
-				s.appendChild(newoption);
-			    }
-			else{
-			// create a new input element, and append to form
-			var n = document.createElement("input");
-			n.setAttribute("name",namePrefix+currentLine);
-			n.setAttribute("id",namePrefix+currentLine);
-			n.setAttribute("type",dataType);
-			n.setAttribute("placeholder",placeholder);
-			n.setAttribute("size",fieldSize);
-			var f = document.getElementById(formId);
-			f.appendChild(n);
-		}
-		}
+			
 		var personArr = [];
 		var arrCounter = 0;
 			
@@ -125,9 +68,15 @@
 		  this.sbd = sbd;
 		  this.sbm = sbm;
 		  this.sby = sby;
-		  this.country;
-		  personArr[arrCounter] = this.Person;
+		  this.country = country;
+		  personArr[arrCounter] = {this.givenname,
+		  this.surname,
+		  this.sbd,
+		  this.sbm,
+		  this.sby,
+		  this.country};
 		  arrCounter++;
+		  return;
 		
 		}
 		function DisplayArr(){
