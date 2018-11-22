@@ -2,31 +2,31 @@
 	<body>
 
 		<h1>Add new input lines to HTML entry form</h1>
-		
-		<p>Enable users to add a row of fields to an HTML input form. In this code, after the HTML loads, addForm() is called. Clicking the Add Line button calls a function, addLine(), which calls addField() once for each field in the new input line. The elements, label and input, are formatted using CSS. </p>
-		<form id = "form1">
-			  Given Name: <input id="givenname" type="text" name="Given Name" label="Given Name">
-			  Surname: <input id ="surname" type="text" name="Surname" label="Surname">
-			  Sbd: <input id = "sbd" type = "number" name = "Solar Birth Day" label="Solar Birth Day">
-			  Sbm: <input id = "sbm" type = "number" name = "Solar Birth Month" label="Solar Birth Month">
-			  Sby: <input id = "sby" type = "number" name = "Solar Birth Year" label ="Solar Birth Year">
-			 <input type="button" onclick="[document.getElementById('surname').value] = new Person(document.getElementById('givenname').value,
-						       document.getElementById('surname').value, document.getElementById('sbm').value,
-						       document.getElementById('sbm').value, document.getElementById('sby').value,
-						       document.getElementById('country').value);" onclick = "addLine()" ;value="Submit">
-		</form>
-		
-		<select id = "country" name="Country" label="Country" form="form1">
-		  <option value="China">China</option>
-		  <option value="USA">Usa</option>
-		</select>
-		
-		<button type="button" onclick="addLine();">Add Line</button>
-		<br />
-		<br />
-		
 		<div id="div1">
+			<p>Enable users to add a row of fields to an HTML input form. In this code, after the HTML loads, addForm() is called. Clicking the Add Line button calls a function, addLine(), which calls addField() once for each field in the new input line. The elements, label and input, are formatted using CSS. </p>
+			<form id = "form1">
+				  Given Name: <input id="givenname" type="text" name="Given Name" label="Given Name">
+				  Surname: <input id ="surname" type="text" name="Surname" label="Surname">
+				  Sbd: <input id = "sbd" type = "number" name = "Solar Birth Day" label="Solar Birth Day">
+				  Sbm: <input id = "sbm" type = "number" name = "Solar Birth Month" label="Solar Birth Month">
+				  Sby: <input id = "sby" type = "number" name = "Solar Birth Year" label ="Solar Birth Year">
+				  <button type="button" onclick="[document.getElementById('surname').value] = new Person(document.getElementById('givenname').value,
+							       document.getElementById('surname').value, document.getElementById('sbm').value,
+							       document.getElementById('sbm').value, document.getElementById('sby').value,
+							       document.getElementById('country').value);" onclick = "addLine()" ;value="Submit"> Add Person </button>
+			</form>
+
+			<select id = "country" name="Country" label="Country" form="form1">
+			  <option value="China">China</option>
+			  <option value="USA">Usa</option>
+			</select>
 		</div>
+		//<button type="button" onclick="addLine();">Add Line</button>
+		<br />
+		<br />
+		
+		
+		
 		
 		<h1>Generate array of objects</h1>
 		
@@ -57,6 +57,20 @@
 		/* addField()
 		 * inserts one label one input element into a row of a form 
 		 */
+			function addLine () {
+				// precondition: inputWidth global variable must be set
+				// precondition: call from addForm() so HTML element with id="fieldset1" exists
+				addField("fieldset1", "givenName", "Given", "text", "Jane",inputWidth);
+				addField("fieldset1", "surname", "Surname", "text", "Doe", inputWidth);
+				addField("fieldset1", "sbd", "Day", "number", "1", inputWidth);
+				addField("fieldset1", "sbm", "Month", "number", "1", inputWidth);
+				addField("fieldset1", "sby", "Year", "number", "1990", inputWidth);
+				addField("fieldset1", "country", "Country", "text", "USA", inputWidth);
+				var newelement = document.createElement("br");
+				var fieldset1 = document.getElementById("fieldset1");
+				fieldset1.appendChild(newelement);
+				currentLine++;
+}
 		function addField(formId, namePrefix, labelText, dataType, placeholder, fieldSize) {
 			// precondition: currentLine (global variable) must be set
 			// precondition: objArray[] (global variable) must be declared
@@ -101,7 +115,7 @@
 			f.appendChild(n);
 		}
 		}
-		var personArr []
+		var personArr [];
 		var arrCounter = 0;
 			
 		function Person(givenname, surname, sbd, sbm, sby, country) {
@@ -112,7 +126,7 @@
 		  this.sby = sby;
 		  this.country;
 		  personArr[arrCounter] = this.Person;
-		  arrCounter++
+		  arrCounter++;
 		  this.object = function(){
 		    var divContent = "<ol start='0'>";
 	     	    objArray.forEach(function(e) {
