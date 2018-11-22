@@ -17,7 +17,7 @@
 				  <button type="button" onclick="[document.getElementById('surname').value] = new Person(document.getElementById('givenname').value,
 							       document.getElementById('surname').value, document.getElementById('sbm').value,
 							       document.getElementById('sbm').value, document.getElementById('sby').value,
-							       document.getElementById('country').value);" onclick = "addLine()" ;value="Submit"> Add Person </button>
+							       document.getElementById('country').value);" onclick = "addLine();" value="Submit"> Add Person </button>
 			</form>
 
 			
@@ -29,11 +29,11 @@
 		
 		
 		
-		<h1>Generate array of objects</h1>
+		<h1>Display table</h1>
 		
 		<p>Loop through the HTML form lines and store the data into an array of objects, where each property of an object contains the data in the input field of the HTML entry form. </p>
 		
-		<button type="button" onclick="Person.object();">Generate and Display Array of Objects</button>
+		<button type="button" onclick="DisplayArr();">Generate and Display Array of Objects</button>
 		<br />
 		
 		<div id="div2">
@@ -43,7 +43,7 @@
 		
 		<p>Loop through the HTML form lines and store the data into an array of objects, where each property of an object contains the data in the input field of the HTML entry form. </p>
 		
-		<button type="button" onclick="person.object();">Generate and Display Table</button>
+		<button type="button" onclick="">Generate and Display Table</button>
 		<br />
 		<br />
 		
@@ -128,18 +128,18 @@
 		  this.country;
 		  personArr[arrCounter] = this.Person;
 		  arrCounter++;
-		  this.object = function(){
+		
+		}
+		function DisplayArr(){
 		    var divContent = "<ol start='0'>";
-	     	    objArray.forEach(function(e) {
+	     	    personArr.forEach(function(e) {
 		    divContent += '<li>';
 		    divContent += JSON.stringify(e);
 		    divContent += '</li>';
 	            });
 	            divContent += "</ol>";
 	            document.getElementById("div2").innerHTML = divContent;			 
-		  }
 		}
-
 	
 		</script>
 		
