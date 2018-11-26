@@ -89,7 +89,7 @@ function DisplayArr() {
     document.getElementById("div2").innerHTML = divContent;
 }
 
-function Table(thArr, tdArr, elemId) {
+function Table(thArr, elemId) {
     this.thArr = thArr;
     this.tbl = null;
     this.makeTable = function() {
@@ -122,7 +122,7 @@ function Table(thArr, tdArr, elemId) {
         table.appendChild(b);
     }
     this.addData = function() {
-        for (var i = 0; i < tdArr.length; i++) {
+        for (var i = 0; i < personArr.length; i++) {
             //local data for USA
             if (objArray[i].country == "USA") {
                 var y = document.createElement("tr");
@@ -130,47 +130,47 @@ function Table(thArr, tdArr, elemId) {
                 document.getElementById("tbody1").appendChild(y);
 
                 var z = document.createElement("td");
-                var t = document.createTextNode(tdArr[i].givenname + " " + tdArr[i].surname);
+                var t = document.createTextNode(personArr[i].givenname + " " + personArr[i].surname);
                 z.appendChild(t);
                 document.getElementById("tr" + i).appendChild(z);
                 z.style.width = '200px';
 
                 var z = document.createElement("td");
-                var t = document.createTextNode(tdArr[i].sbm + "/" + tdArr[i].sbd + "/" + tdArr[i].sby);
+                var t = document.createTextNode(personArr[i].sbm + "/" + personArr[i].sbd + "/" + personArr[i].sby);
                 z.appendChild(t);
                 document.getElementById("tr" + i).appendChild(z);
                 z.style.width = '200px';
 
                 var z = document.createElement("td");
-                var t = document.createTextNode(2018 - tdArr[i].sby);
+                var t = document.createTextNode(2018 - personArr[i].sby);
                 z.appendChild(t);
                 document.getElementById("tr" + i).appendChild(z);
                 z.style.width = '200px';
                 //american zodiac signs
                 var zodiac
-                if (tdArr[i].sbm == 1) {
+                if (personArr[i].sbm == 1) {
                     zodiac = "Capricorn"
-                } else if (tdArr[i].sbm == 2) {
+                } else if (personArr[i].sbm == 2) {
                     zodiac = "Aquarius"
-                } else if (tdArr[i].sbm == 3) {
+                } else if (personArr[i].sbm == 3) {
                     zodiac = "Pisces"
-                } else if (tdArr[i].sbm == 4) {
+                } else if (personArr[i].sbm == 4) {
                     zodiac = "Aries"
-                } else if (tdArr[i].sbm == 5) {
+                } else if (personArr[i].sbm == 5) {
                     zodiac = "Taurus"
-                } else if (tdArr[i].sbm == 6) {
+                } else if (personArr[i].sbm == 6) {
                     zodiac = "Gemini"
-                } else if (tdArr[i].sbm == 7) {
+                } else if (personArr[i].sbm == 7) {
                     zodiac = "Cancer"
-                } else if (tdArr[i].sbm == 8) {
+                } else if (personArr[i].sbm == 8) {
                     zodiac = "Leo"
-                } else if (tdArr[i].sbm == 2) {
+                } else if (personArr[i].sbm == 2) {
                     zodiac = "Virgo"
-                } else if (tdArr[i].sbm == 2) {
+                } else if (personArr[i].sbm == 2) {
                     zodiac = "Libra"
-                } else if (tdArr[i].sbm == 2) {
+                } else if (personArr[i].sbm == 2) {
                     zodiac = "Scorpio"
-                } else if (tdArr[i].sbm == 2) {
+                } else if (personArr[i].sbm == 2) {
                     zodiac = "Saggitarus"
                 }
 
@@ -186,25 +186,25 @@ function Table(thArr, tdArr, elemId) {
                 y.setAttribute("id", "tr" + i);
                 document.getElementById("tbody1").appendChild(y);
                 var z = document.createElement("td");
-                var t = document.createTextNode(tdArr[i].surname + " " + tdArr[i].givenname);
+                var t = document.createTextNode(personArr[i].surname + " " + personArr[i].givenname);
                 z.appendChild(t);
                 document.getElementById("tr" + i).appendChild(z);
                 z.style.width = '200px';
 
                 var z = document.createElement("td");
-                var t = document.createTextNode(tdArr[i].sby + "/" + tdArr[i].sbm + "/" + tdArr[i].sbd);
+                var t = document.createTextNode(personArr[i].sby + "/" + personArr[i].sbm + "/" + personArr[i].sbd);
                 z.appendChild(t);
                 document.getElementById("tr" + i).appendChild(z);
                 z.style.width = '200px';
 
                 var z = document.createElement("td");
-                var t = document.createTextNode((2018 - tdArr[i].sby) + 1);
+                var t = document.createTextNode((2018 - personArr[i].sby) + 1);
                 z.appendChild(t);
                 document.getElementById("tr" + i).appendChild(z);
                 z.style.width = '200px';
                 //Chinese zodiac signs
                 var zodiac
-                switch ((tdArr[i].sby - 4) % 12) {
+                switch ((personArr[i].sby - 4) % 12) {
                     case 0:
                         zodiac = "Rat"
                     case 1:
