@@ -43,7 +43,7 @@
 		
 		<p>Loop through the HTML form lines and store the data into an array of objects, where each property of an object contains the data in the input field of the HTML entry form. </p>
 		
-		<button type="button" onclick="tbl = new Table(headerArr, PersonArr, "div3");tbl.makeTable(); tbl.addData();">Generate and Display Table</button>
+		<button type="button" onclick="tbl=new Table(headerArr, PersonArr, "div3");tbl.makeTable(); tbl.addData();">Generate and Display Table</button>
 		<br />
 		<br />
 		
@@ -54,175 +54,193 @@
 		
 		<script>
 
-	        headerArr = ["Local Name", "Local D.O.B.","Local Age", "Local Zodiac"];	
-		var personArr = [];
-		var arrCounter = 0;
-			
-		function Person(givenname, surname, sbd, sbm, sby, country) {
-		  this.givenname = givenname;
-		  this.surname = surname;
-		  this.sbd = sbd;
-		  this.sbm = sbm;
-		  this.sby = sby;
-		  this.country = country;
-		  personArr[arrCounter] = {givenname,surname,sbd,sbm,sby,country};
-		  arrCounter++;
-		  return;
-		
-		}
-		function DisplayArr(){
-		    var divContent = "<ol start='0'>";
-	     	    personArr.forEach(function(e) {
-		    divContent += '<li>';
-		    divContent += JSON.stringify(e);
-		    divContent += '</li>';
-	            });
-	            divContent += "</ol>";
-	            document.getElementById("div2").innerHTML = divContent;			 
-		}
-			
-			function Table(thArr,tdArr, elemId) {
-			  this.thArr = thArr;
-			  this.tbl = null;
-			  this.makeTable = function(){
+	       headerArr = ["Local Name", "Local D.O.B.", "Local Age", "Local Zodiac"];
+var personArr = [];
+var arrCounter = 0;
 
-			    // make/append new table element
-				var el = document.createElement("table");
-				  el.setAttribute("id","table1");
-			    el.setAttribute("border","1");
-				  var root = 
-				document.getElementById(elemId);
-				  root.appendChild(el);
-			    // make table element the new root
-			    root = el;
+function Person(givenname, surname, sbd, sbm, sby, country) {
+    this.givenname = givenname;
+    this.surname = surname;
+    this.sbd = sbd;
+    this.sbm = sbm;
+    this.sby = sby;
+    this.country = country;
+    personArr[arrCounter] = {
+        givenname,
+        surname,
+        sbd,
+        sbm,
+        sby,
+        country
+    };
+    arrCounter++;
+    return;
 
-			    // make/append table row for headers
-			    var el = document.createElement("tr");
-				  el.setAttribute("id","headerRow");
-				  root.appendChild(el);
-			    // make table row the new root
-			    root = el;
+}
 
-			    // make/append table headers
-			    for (i=0; i<thArr.length; i++) {
-			      var thElem = 
-				  document.createElement("th");
-				    var t = document.createTextNode(thArr[i]);
-				    thElem.appendChild(t);
-			      root.appendChild(thElem);
-			    }
-			    var b = document.createElement("tbody");
-				b.setAttribute("id","tbody1");
-				var table = document.getElementById("table1");
-				table.appendChild(b);
-			  }
-			 this.addData = function(){
-				 for (var i = 0; i < tdArr.length; i++){
-			//local data for USA
-			if(objArray[i].country == "USA"){
-			var y = document.createElement("tr");
-   			y.setAttribute("id", "tr"+i);
-   			document.getElementById("tbody1").appendChild(y);
-				
-   			var z = document.createElement("td");
-    			var t = document.createTextNode(tdArr[i].givenname+ " " +tdArr[i].surname);
-    			z.appendChild(t);
-   			document.getElementById("tr"+i).appendChild(z);
-		        z.style.width = '200px';
-			
-			var z = document.createElement("td");
-    			var t = document.createTextNode(tdArr[i].sbm + "/" + tdArr[i].sbd + "/" + tdArr[i].sby);
-    			z.appendChild(t);
-   			document.getElementById("tr"+i).appendChild(z);
-			z.style.width = '200px';
-			
-			var z = document.createElement("td");
-    			var t = document.createTextNode(2018 - tdArr[i].sby);
-    			z.appendChild(t);
-   			document.getElementById("tr"+i).appendChild(z);
-			z.style.width = '200px';
-			//american zodiac signs
-			var zodiac
-			if(tdArr[i].sbm == 1){zodiac = "Capricorn"}
-			else if(tdArr[i].sbm == 2){zodiac = "Aquarius"}
-			else if(tdArr[i].sbm == 3){zodiac = "Pisces"}
-			else if(tdArr[i].sbm == 4){zodiac = "Aries"}
-			else if(tdArr[i].sbm == 5){zodiac = "Taurus"}	
-			else if(tdArr[i].sbm == 6){zodiac = "Gemini"}	
-			else if(tdArr[i].sbm == 7){zodiac = "Cancer"}	
-			else if(tdArr[i].sbm == 8){zodiac = "Leo"}
-			else if(tdArr[i].sbm == 2){zodiac = "Virgo"}
-			else if(tdArr[i].sbm == 2){zodiac = "Libra"}	
-			else if(tdArr[i].sbm == 2){zodiac = "Scorpio"}	
-			else if(tdArr[i].sbm == 2){zodiac = "Saggitarus"}	
-				
-			var z = document.createElement("td");
-    			var t = document.createTextNode(zodiac);
-    			z.appendChild(t);
-   			document.getElementById("tr"+i).appendChild(z);
-			z.style.width = '200px';
-			}
-		//local data for China
-		else{
-			var y = document.createElement("tr");
-   			y.setAttribute("id", "tr"+i);
-   			document.getElementById("tbody1").appendChild(y);
-   			var z = document.createElement("td");
-    			var t = document.createTextNode(tdArr[i].surname+ " " +tdArr[i].givenname);
-    			z.appendChild(t);
-   			document.getElementById("tr"+i).appendChild(z);
-			z.style.width = '200px';
-			
-			var z = document.createElement("td");
-    			var t = document.createTextNode(tdArr[i].sby + "/" + tdArr[i].sbm + "/" + tdArr[i].sbd);
-    			z.appendChild(t);
-   			document.getElementById("tr"+i).appendChild(z);
-			z.style.width = '200px';
-			
-			var z = document.createElement("td");
-    			var t = document.createTextNode((2018 - tdArr[i].sby)+1);
-    			z.appendChild(t);
-   			document.getElementById("tr"+i).appendChild(z);
-			z.style.width = '200px';
-			//Chinese zodiac signs
-			var zodiac
-			    switch ((tdArr[i].sby - 4) % 12) {
-				        case 0:
-					    zodiac= "Rat"
-					case 1:
-					    zodiac= 'Ox';
-					case 2:
-					    zodiac= 'Tiger';
-					case 3:
-					    zodiac= 'Rabbit';
-					case 4:
-					    zodiac= 'Dragon';
-					case 5:
-					    zodiac='Snake';
-					case 6:
-					    zodiac= 'Horse';
-					case 7:
-					    zodiac= 'Goat';
-					case 8:
-					    zodiac= 'Monkey';
-					case 9:
-					    zodiac= 'Rooster';
-					case 10:
-					    zodiac= 'Dog';
-					case 11:
-					    zodiac= 'Pig';
+function DisplayArr() {
+    var divContent = "<ol start='0'>";
+    personArr.forEach(function(e) {
+        divContent += '<li>';
+        divContent += JSON.stringify(e);
+        divContent += '</li>';
+    });
+    divContent += "</ol>";
+    document.getElementById("div2").innerHTML = divContent;
+}
+
+function Table(thArr, tdArr, elemId) {
+    this.thArr = thArr;
+    this.tbl = null;
+    this.makeTable = function() {
+        // make/append new table element
+        var el = document.createElement("table");
+        el.setAttribute("id", "table1");
+        el.setAttribute("border", "1");
+        var root =
+            document.getElementById(elemId);
+        root.appendChild(el);
+        // make table element the new root
+        root = el;
+        // make/append table row for headers
+        var el = document.createElement("tr");
+        el.setAttribute("id", "headerRow");
+        root.appendChild(el);
+        // make table row the new root
+        root = el;
+        // make/append table headers
+        for (i = 0; i < thArr.length; i++) {
+            var thElem =
+                document.createElement("th");
+            var t = document.createTextNode(thArr[i]);
+            thElem.appendChild(t);
+            root.appendChild(thElem);
+        }
+        var b = document.createElement("tbody");
+        b.setAttribute("id", "tbody1");
+        var table = document.getElementById("table1");
+        table.appendChild(b);
     }
-			
-			var z = document.createElement("td");
-    			var t = document.createTextNode(zodiac);
-    			z.appendChild(t);
-   			document.getElementById("tr"+i).appendChild(z);
-			z.style.width = '200px';
-				
-		}
-		}
-	}
-			}
+    this.addData = function() {
+        for (var i = 0; i < tdArr.length; i++) {
+            //local data for USA
+            if (objArray[i].country == "USA") {
+                var y = document.createElement("tr");
+                y.setAttribute("id", "tr" + i);
+                document.getElementById("tbody1").appendChild(y);
+
+                var z = document.createElement("td");
+                var t = document.createTextNode(tdArr[i].givenname + " " + tdArr[i].surname);
+                z.appendChild(t);
+                document.getElementById("tr" + i).appendChild(z);
+                z.style.width = '200px';
+
+                var z = document.createElement("td");
+                var t = document.createTextNode(tdArr[i].sbm + "/" + tdArr[i].sbd + "/" + tdArr[i].sby);
+                z.appendChild(t);
+                document.getElementById("tr" + i).appendChild(z);
+                z.style.width = '200px';
+
+                var z = document.createElement("td");
+                var t = document.createTextNode(2018 - tdArr[i].sby);
+                z.appendChild(t);
+                document.getElementById("tr" + i).appendChild(z);
+                z.style.width = '200px';
+                //american zodiac signs
+                var zodiac
+                if (tdArr[i].sbm == 1) {
+                    zodiac = "Capricorn"
+                } else if (tdArr[i].sbm == 2) {
+                    zodiac = "Aquarius"
+                } else if (tdArr[i].sbm == 3) {
+                    zodiac = "Pisces"
+                } else if (tdArr[i].sbm == 4) {
+                    zodiac = "Aries"
+                } else if (tdArr[i].sbm == 5) {
+                    zodiac = "Taurus"
+                } else if (tdArr[i].sbm == 6) {
+                    zodiac = "Gemini"
+                } else if (tdArr[i].sbm == 7) {
+                    zodiac = "Cancer"
+                } else if (tdArr[i].sbm == 8) {
+                    zodiac = "Leo"
+                } else if (tdArr[i].sbm == 2) {
+                    zodiac = "Virgo"
+                } else if (tdArr[i].sbm == 2) {
+                    zodiac = "Libra"
+                } else if (tdArr[i].sbm == 2) {
+                    zodiac = "Scorpio"
+                } else if (tdArr[i].sbm == 2) {
+                    zodiac = "Saggitarus"
+                }
+
+                var z = document.createElement("td");
+                var t = document.createTextNode(zodiac);
+                z.appendChild(t);
+                document.getElementById("tr" + i).appendChild(z);
+                z.style.width = '200px';
+            }
+            //local data for China
+            else {
+                var y = document.createElement("tr");
+                y.setAttribute("id", "tr" + i);
+                document.getElementById("tbody1").appendChild(y);
+                var z = document.createElement("td");
+                var t = document.createTextNode(tdArr[i].surname + " " + tdArr[i].givenname);
+                z.appendChild(t);
+                document.getElementById("tr" + i).appendChild(z);
+                z.style.width = '200px';
+
+                var z = document.createElement("td");
+                var t = document.createTextNode(tdArr[i].sby + "/" + tdArr[i].sbm + "/" + tdArr[i].sbd);
+                z.appendChild(t);
+                document.getElementById("tr" + i).appendChild(z);
+                z.style.width = '200px';
+
+                var z = document.createElement("td");
+                var t = document.createTextNode((2018 - tdArr[i].sby) + 1);
+                z.appendChild(t);
+                document.getElementById("tr" + i).appendChild(z);
+                z.style.width = '200px';
+                //Chinese zodiac signs
+                var zodiac
+                switch ((tdArr[i].sby - 4) % 12) {
+                    case 0:
+                        zodiac = "Rat"
+                    case 1:
+                        zodiac = 'Ox';
+                    case 2:
+                        zodiac = 'Tiger';
+                    case 3:
+                        zodiac = 'Rabbit';
+                    case 4:
+                        zodiac = 'Dragon';
+                    case 5:
+                        zodiac = 'Snake';
+                    case 6:
+                        zodiac = 'Horse';
+                    case 7:
+                        zodiac = 'Goat';
+                    case 8:
+                        zodiac = 'Monkey';
+                    case 9:
+                        zodiac = 'Rooster';
+                    case 10:
+                        zodiac = 'Dog';
+                    case 11:
+                        zodiac = 'Pig';
+                }
+
+                var z = document.createElement("td");
+                var t = document.createTextNode(zodiac);
+                z.appendChild(t);
+                document.getElementById("tr" + i).appendChild(z);
+                z.style.width = '200px';
+
+            }
+        }
+    }
+}
 			 
 
 			
