@@ -124,7 +124,7 @@ function Table(thArr, elemId) {
     this.addData = function() {
         for (var i = 0; i < personArr.length; i++) {
             //local data for USA
-            if (objArray[i].country == "USA") {
+            if (personArr[i].country == "USA") {
                 var y = document.createElement("tr");
                 y.setAttribute("id", "tr" + i);
                 document.getElementById("tbody1").appendChild(y);
